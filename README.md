@@ -2,6 +2,24 @@
 
 `duration.Parse()` parses a formatted string and returns the time.Duration value it represents.
 
+## Usage
+
+``` go
+package duration_test
+
+import (
+	"fmt"
+
+	"github.com/k1LoW/duration"
+)
+
+func ExampleParse() {
+	d, _ := duration.Parse("3 days 4 hours")
+	fmt.Printf("%s", d)
+	// Output: 76h0m0s
+}
+```
+
 ## Supported unit of time
 
 | Unit of time | value |
