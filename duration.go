@@ -39,39 +39,42 @@ func Parse(s string) (time.Duration, error) {
 	for _, token := range s {
 		switch {
 		case token == '+':
-			d, err := build(negative, value, unit)
-			if err != nil {
-				return 0, err
+			if len(unit) > 0 {
+				d, err := build(negative, value, unit)
+				if err != nil {
+					return 0, err
+				}
+				duration = duration + d
+				value = []rune{}
+				unit = []rune{}
 			}
-			duration = duration + d
-			value = []rune{}
-			unit = []rune{}
 
 			negative = false
-			continue
 		case token == '-':
-			d, err := build(negative, value, unit)
-			if err != nil {
-				return 0, err
+			if len(unit) > 0 {
+				d, err := build(negative, value, unit)
+				if err != nil {
+					return 0, err
+				}
+				duration = duration + d
+				value = []rune{}
+				unit = []rune{}
 			}
-			duration = duration + d
-			value = []rune{}
-			unit = []rune{}
 
 			negative = true
-			continue
-		case (token >= '0' && token <= '9') || token == '.':
-			d, err := build(negative, value, unit)
-			if err != nil {
-				return 0, err
+		case (token >= '0' && token <= '9'), token == '.':
+			if len(unit) > 0 {
+				d, err := build(negative, value, unit)
+				if err != nil {
+					return 0, err
+				}
+				duration = duration + d
+				value = []rune{}
+				unit = []rune{}
 			}
-			duration = duration + d
-			value = []rune{}
-			unit = []rune{}
 
 			value = append(value, token)
 		case token == ' ':
-			continue
 		default:
 			unit = append(unit, token)
 		}
@@ -86,9 +89,6 @@ func Parse(s string) (time.Duration, error) {
 }
 
 func build(negative bool, value, unit []rune) (int64, error) {
-	if len(unit) == 0 {
-		return int64(0), nil
-	}
 	v, err := strconv.ParseFloat(string(value), 64)
 	if err != nil {
 		return int64(0), err

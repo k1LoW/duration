@@ -16,10 +16,11 @@ func TestParse(t *testing.T) {
 		{"3h", false, time.Duration(3 * time.Hour)},
 		{"+ 3 hour", false, time.Duration(3 * time.Hour)},
 		{"- 3 hour", false, time.Duration(-3 * time.Hour)},
-		{"2 days", false, time.Duration(2 * 24 * time.Hour)},
+		{"12 days", false, time.Duration(12 * 24 * time.Hour)},
 		{"4min", false, time.Duration(4 * time.Minute)},
 		{"5 hour 6 min", false, time.Duration(5*time.Hour + 6*time.Minute)},
 		{"7 hour - 9sec", false, time.Duration(7*time.Hour - 9*time.Second)},
+		{"0.5 hour", false, time.Duration(30 * time.Minute)},
 	}
 
 	for _, tt := range tests {
