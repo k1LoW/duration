@@ -14,6 +14,8 @@ func TestParse(t *testing.T) {
 		{"3 hour", false, time.Duration(3 * time.Hour)},
 		{"3hour", false, time.Duration(3 * time.Hour)},
 		{"3h", false, time.Duration(3 * time.Hour)},
+		{"3Hour", false, time.Duration(3 * time.Hour)},
+		{"3H", false, time.Duration(3 * time.Hour)},
 		{"+ 3 hour", false, time.Duration(3 * time.Hour)},
 		{"- 3 hour", false, time.Duration(-3 * time.Hour)},
 		{"12 days", false, time.Duration(12 * 24 * time.Hour)},

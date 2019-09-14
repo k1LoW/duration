@@ -3,6 +3,7 @@ package duration
 import (
 	"errors"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -31,6 +32,7 @@ var units = map[string]float64{
 
 // Parse parses a formatted string and returns the time.Duration value it represents.
 func Parse(s string) (time.Duration, error) {
+	s = strings.ToLower(s)
 	duration := int64(0)
 	value := []rune{}
 	unit := []rune{}
