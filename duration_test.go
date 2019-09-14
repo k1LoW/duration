@@ -24,6 +24,8 @@ func TestParse(t *testing.T) {
 		{"7 hour - 9sec", false, time.Duration(7*time.Hour - 9*time.Second)},
 		{"7day+4days-3days", false, time.Duration(8 * 24 * time.Hour)},
 		{"0.5 hour", false, time.Duration(30 * time.Minute)},
+		// want error
+		{"2 years", true, time.Duration(0)},
 	}
 
 	for _, tt := range tests {
