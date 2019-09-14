@@ -22,6 +22,7 @@ func TestParse(t *testing.T) {
 		{"4min", false, time.Duration(4 * time.Minute)},
 		{"5 hour 6 min", false, time.Duration(5*time.Hour + 6*time.Minute)},
 		{"7 hour - 9sec", false, time.Duration(7*time.Hour - 9*time.Second)},
+		{"7day+4days-3days", false, time.Duration(8 * 24 * time.Hour)},
 		{"0.5 hour", false, time.Duration(30 * time.Minute)},
 	}
 
