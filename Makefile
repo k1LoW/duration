@@ -5,7 +5,7 @@ default: test
 ci: depsdev test sec
 
 test:
-	go test -v ./... -coverprofile=coverage.txt -covermode=count
+	go test -v ./... -coverprofile=coverage.out -covermode=count
 
 sec:
 	gosec ./...
