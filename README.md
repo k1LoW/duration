@@ -1,4 +1,4 @@
-# duration [![GitHub Actions](https://action-badges.now.sh/k1LoW/duration)](https://github.com/k1LoW/duration/actions) [![GoDoc](https://godoc.org/github.com/k1LoW/duration?status.svg)](https://godoc.org/github.com/k1LoW/duration)
+# duration [![Test](https://github.com/k1LoW/duration/actions/workflows/ci.yml/badge.svg)](https://github.com/k1LoW/duration/actions/workflows/ci.yml) [![GoDoc](https://godoc.org/github.com/k1LoW/duration?status.svg)](https://godoc.org/github.com/k1LoW/duration)
 
 `duration.Parse()` parses a formatted string and returns the time.Duration value it represents.
 
