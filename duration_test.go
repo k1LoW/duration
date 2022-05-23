@@ -24,6 +24,9 @@ func TestParse(t *testing.T) {
 		{"7 hour - 9sec", false, time.Duration(7*time.Hour - 9*time.Second)},
 		{"7day+4days-3days", false, time.Duration(8 * 24 * time.Hour)},
 		{"0.5 hour", false, time.Duration(30 * time.Minute)},
+		{"0.5 sec", false, time.Duration(500 * time.Millisecond)},
+		{"0.05 sec", false, time.Duration(50 * time.Millisecond)},
+		{"0.005 sec", false, time.Duration(5 * time.Millisecond)},
 		// want error
 		{"2 years", true, time.Duration(0)},
 		{"7", true, time.Duration(0)},
