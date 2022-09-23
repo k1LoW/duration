@@ -16,10 +16,15 @@ depsdev:
 	go install github.com/securego/gosec/v2/cmd/gosec@latest
 
 prerelease:
+	git pull origin main --tag
+	go mod tidy
 	ghch -w -N ${VER}
-	gocredits . > CREDITS
+	gocredits -w
 	git add CHANGELOG.md CREDITS
 	git commit -m'Bump up version number'
 	git tag ${VER}
+
+release:
+	git push origin main --tag
 
 .PHONY: default test
