@@ -25,8 +25,17 @@ func ExampleParse() {
 | Unit of time | value |
 | --- | --- |
 | ns | time.Nanosecond |
+| nsec | time.Nanosecond |
+| nanosecond | time.Nanosecond |
+| nanoseconds | time.Nanosecond |
 | us | time.Microsecond |
+| usec | time.Microsecond |
+| microsecond | time.Microsecond |
+| microseconds | time.Microsecond |
 | ms | time.Millisecond |
+| msec | time.Millisecond |
+| millisecond | time.Millisecond |
+| milliseconds | time.Millisecond |
 | s | time.Second |
 | sec | time.Second |
 | second | time.Second |

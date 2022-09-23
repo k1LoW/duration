@@ -27,18 +27,22 @@ func TestParse(t *testing.T) {
 		{"0.5 sec", false, time.Duration(500 * time.Millisecond)},
 		{"0.05 sec", false, time.Duration(50 * time.Millisecond)},
 		{"0.005 sec", false, time.Duration(5 * time.Millisecond)},
+		{"5 usec", false, time.Duration(5 * time.Microsecond)},
+		{"5 msec", false, time.Duration(5 * time.Millisecond)},
 		// want error
 		{"2 years", true, time.Duration(0)},
 		{"7", true, time.Duration(0)},
 	}
 
 	for _, tt := range tests {
-		got, err := Parse(tt.in)
-		if !tt.wantErr && err != nil {
-			t.Fatalf("Parse(\"%s\") error: %v", tt.in, err)
-		}
-		if got != tt.want {
-			t.Errorf("Parse(\"%s\"): got %d want %d", tt.in, got, tt.want)
-		}
+		t.Run(tt.in, func(t *testing.T) {
+			got, err := Parse(tt.in)
+			if !tt.wantErr && err != nil {
+				t.Fatalf("Parse(\"%s\") error: %v", tt.in, err)
+			}
+			if got != tt.want {
+				t.Errorf("Parse(\"%s\"): got %d want %d", tt.in, got, tt.want)
+			}
+		})
 	}
 }
